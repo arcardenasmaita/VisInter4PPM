@@ -1,0 +1,96 @@
+========== EXPERIMENT SETUP ==========
+Date: 2023-07-03 16:36:52.063614
+Experiment name: expCOOPIS_BPIC12_v2
+------------------------------- 
+ ====> Pre Processing steps
+-> activities renamed
+-> classes were defined
+Class 0:70432
+Class 1:99925
+Class 2:79094
+-> Incompleted traces were dropped 
+ DS shape (249451, 10) (events)
+-> Frequency Indexing applied
+====> Data encoding with: Frequency-indexing 
+ DS shape: (12688, 25) (traces)-> Frequencies reduced to 1
+-> Duplicates were dropped 
+ DS shape (63, 25) unique traces
+-> correlated activities were dropped: 
+A_APPROVED 
+A_DECLINED 
+A_CANCELLED 
+-> sequence activities were dropped:
+A_Partly_submetted
+A_Submitted
+ -> ds columns: Index(['label', 'A_Accepted', 'A_Activated', 'A_Finalized', 'A_Preaccepted',
+       'A_Registered', 'O_Accepted', 'O_Cancelled', 'O_Created', 'O_Declined',
+       'O_Selected', 'O_Sent', 'O_Sent_back', 'W_Assess_fraude',
+       'W_Assessing_application', 'W_Calling_after_sent_offers',
+       'W_Calling_to_add_info_app', 'W_Change_contact_details',
+       'W_Filling_info_application', 'W_Fixing_incoming_lead'],
+      dtype='object', name='activity')
+ Nro. Columns: (20,)
+====> Data splitted... 
+ splitType: Resubstitution 
+ X_train: (63, 19) 
+ y_train: (63,) 
+ X_test: (63, 19) 
+ y_test: (63,)
+====> Choose better model... 
+     oob_accuracy  accuracy criterion  max_depth  n_estimators
+3       0.857143  0.888889      gini        3.0            50
+4       0.857143  0.888889      gini        3.0           100
+17      0.841270  0.888889   entropy        3.0           150
+16      0.841270  0.888889   entropy        3.0           100
+5       0.841270  0.888889      gini        3.0           150
+15      0.825397  0.888889   entropy        3.0            50
+10      0.809524  0.904762      gini       20.0           100
+19      0.809524  0.904762   entropy       10.0           100
+13      0.809524  0.904762   entropy        NaN           100
+1       0.809524  0.904762      gini        NaN           100
+ ====> Final parameters... 
+    oob_accuracy  accuracy criterion  max_depth  n_estimators
+3      0.857143  0.888889      gini        3.0            50
+ oob_score = True, random_state = 42, class_weight={0: 0.77, 1: 0.91, 2: 1.62}
+ ====> Model trained...
+ model_score: 0.9047619047619048 
+ model_obbScore:  0.8095238095238095 -> Cross tab 
+Predicted labels   0   1   2
+Actual labels               
+0                 21   0   6
+1                  0  23   0
+2                  0   0  13
+ -> Metrics SKlearn 
+ accuracy:  0.9047619047619048 
+ matrix: [[21  0  6]
+ [ 0 23  0]
+ [ 0  0 13]] 
+ report:               precision    recall  f1-score   support
+
+           0       1.00      0.78      0.88        27
+           1       1.00      1.00      1.00        23
+           2       0.68      1.00      0.81        13
+
+    accuracy                           0.90        63
+   macro avg       0.89      0.93      0.90        63
+weighted avg       0.93      0.90      0.91        63
+ 
+ multilabel matrix [[[36  0]
+  [ 6 21]]
+
+ [[40  0]
+  [ 0 23]]
+
+ [[44  6]
+  [ 0 13]]]
+ f1score_weighted 0.9077380952380952  
+ epsilon 0.09226190476190477
+--------------------
+ ====> Lime....
+
+clase 0
+Elapsed time: 0:01:36
+clase 1
+Elapsed time: 0:00:23
+clase 2
+Elapsed time: 0:00:56
